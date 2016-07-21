@@ -1,0 +1,51 @@
+<html>
+<head>
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Welcome {{ alias }}</h1>
+
+		<h3>Quotable Quotes</h3>
+		<div class="quotes">
+			<p>{% for quote in quotes %}
+					{{ quote['author'] }}: {{ quote['quote'] }}<br>
+					Posted by <a href="/user/{{quote['id']}}">{{quote['name']}}</a>
+					<form>
+						<input type="submit" name="addlist" value="Add to my list">
+					</form><hr>
+				{% endfor %}</p>
+		</div>
+<h3>Your Quotes</h3>
+<div class="quotes">
+
+
+</div>
+		
+
+
+
+
+
+			<div id="contribute">
+			<h3>Contribute a Quote:</h3>
+			<form action="/add_quote" method="POST">
+			Quoted By: <input type="text" name="name"><br>
+			Message: <input type="text" name="quote"><br>
+			<input type="submit" name="submit" value="Submit">
+{% with messages = get_flashed_messages(with_categories=true) %}
+	{% if messages %}
+	<ul class=flashes>
+		{% for category, message in messages %}
+			{% if category == 'quote_errors' %}
+			<li>{{ message }}</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+	{% endif %}
+{% endwith %}
+</form>
+		</div>
+	</div> 
+</body>
+</html>
