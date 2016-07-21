@@ -1,0 +1,33 @@
+* {
+  font-family: arial;
+}
+.wrapper {
+	width: 970px;
+	height: auto;
+	/*border: solid black 1px;*/
+}
+.box {
+	border: solid black 1px;
+	display: inline-block;
+	width: 275px;
+}
+form {
+	text-align: right;
+}
+.quotes {
+	border: solid black 1px;
+	display: inline-block;
+	width: 275px;
+	height: 300px;
+	vertical-align: top;
+	overflow: scroll;
+
+}
+.myquotes {
+	/*border: solid black 1px;*/
+	display: inline-block;
+	width: auto;
+	height: auto;
+	vertical-align: top;
+	/*overflow: scroll;*/
+}
