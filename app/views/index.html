@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+
+<body>
+<div class="wrapper">
+	<h2>Welcome!</h2>
+	<!--        REGISTRATION         -->
+	<div class="box">
+	<h4>Register</h4><br>
+		<form action="/register" method="POST">
+		Name: <input type="text" name="name"><br>
+		Alias: <input type="text" name="alias"><br>
+		Email: <input type="text" name="email"><br>
+		Password: <input type="password" name="password"><br>
+		Confirm pw: <input type="password" name="pw_confirmation"><br>
+		Date of Birth:<input type="date" name="birthday"><br>
+		<input type="submit" name="register" value="Register">
+		</form>
+	<br>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+{% for message in messages %}
+<li>{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% block body %}
+{% endblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+{% for category, message in messages %}
+{% if category == 'regis_errors' %}
+<li>{{ message }}</li>
+{% endif %}
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+	</div>
+
+	<br>
+
+	<!--        LOGIN         -->
+	<div class="box">
+	<h4>Login</h4>
+	<br>
+	<form action="/login" method="POST">
+		Email: <input type="text" name="email"><br>
+		Password: <input type="password" name="password"><br>
+		<input type="submit" name="login" value="Login">
+	</form>
+
+	<br>
+	{% with messages = get_flashed_messages(with_categories=true) %}
+	  {% if messages %}
+	    <ul class=flashes>
+	    {% for category, message in messages %}
+	    	{% if category == 'login_errors' %}
+	      <li>{{ message }}</li>
+	      	{% endif %}
+	    {% endfor %}
+	    </ul>
+	  {% endif %}
+	{% endwith %}
+	</div>
+</div>
+</body>
+</html>
