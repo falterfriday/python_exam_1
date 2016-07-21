@@ -1,0 +1,21 @@
+<html>
+<head>
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+	<h3>Posts by {{ user['alias'] }}</h3>
+	<p>Count {{ number }}</p>
+
+	<div>
+	<div class="myquotes">
+		<p>{% for quote in quotes %}
+		{{ quote['author'] }}: {{ quote['quote'] }}<br><hr>
+		{% endfor %}</p>
+	</div>	
+		<div class="nav">
+		<a href="#">Dashboard</a> &nbsp;|&nbsp;
+		<a href="/clear">Logout</a>
+	</div>
+	</div>
+</body>
+</html>
